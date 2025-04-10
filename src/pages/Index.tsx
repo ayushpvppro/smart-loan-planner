@@ -27,7 +27,7 @@ const Index = () => {
         </div>
         <div className="space-y-2 text-slate-600">
           <p><strong>Where:</strong></p>
-          <p>• P = Principal loan amount</p>
+          <p>• P = Principal loan amount (in ₹)</p>
           <p>• R = Monthly interest rate (annual rate ÷ 12 ÷ 100)</p>
           <p>• N = Loan term in months</p>
         </div>

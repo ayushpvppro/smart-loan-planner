@@ -89,9 +89,9 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
   };
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("en-US", {
+    return new Intl.NumberFormat("en-IN", {
       style: "currency",
-      currency: "USD",
+      currency: "INR",
       maximumFractionDigits: 0,
     }).format(value);
   };
@@ -147,8 +147,8 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                   className="py-2"
                 />
                 <div className="flex justify-between text-xs text-slate-500">
-                  <span>$0</span>
-                  <span>$1,000,000</span>
+                  <span>₹0</span>
+                  <span>₹10,00,000</span>
                 </div>
               </div>
 
