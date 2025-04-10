@@ -101,10 +101,15 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
     { name: "Interest", value: totalInterest, color: "#E5DEFF" },
   ];
 
+  const darkModeChartData = [
+    { name: "Principal", value: loanAmount, color: "#7E69AB" },
+    { name: "Interest", value: totalInterest, color: "#473b63" },
+  ];
+
   return (
     <div className={`w-full max-w-4xl mx-auto ${className}`}>
-      <Card className="shadow-lg border-0">
-        <CardHeader className="bg-calculator-purple text-white rounded-t-lg">
+      <Card className="shadow-lg border-0 dark:border dark:border-slate-700 dark:bg-slate-800">
+        <CardHeader className="bg-calculator-purple text-white rounded-t-lg dark:bg-calculator-darkpurple">
           <CardTitle className="flex items-center text-2xl font-semibold">
             <Calculator className="mr-2" size={24} />
             Loan EMI Calculator
@@ -116,7 +121,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
               {/* Loan Amount */}
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <Label htmlFor="loanAmount" className="text-sm font-medium flex items-center">
+                  <Label htmlFor="loanAmount" className="text-sm font-medium flex items-center dark:text-slate-300">
                     Loan Amount
                     <TooltipProvider>
                       <UITooltip>
@@ -129,14 +134,14 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                       </UITooltip>
                     </TooltipProvider>
                   </Label>
-                  <span className="text-sm font-semibold">{formatCurrency(loanAmount)}</span>
+                  <span className="text-sm font-semibold dark:text-slate-200">{formatCurrency(loanAmount)}</span>
                 </div>
                 <Input
                   id="loanAmount"
                   type="text"
                   value={loanAmount.toLocaleString()}
                   onChange={handleLoanAmountChange}
-                  className="border-calculator-gray bg-white"
+                  className="border-calculator-gray bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200"
                 />
                 <Slider
                   defaultValue={[loanAmount]}
@@ -146,7 +151,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                   onValueChange={handleLoanAmountSliderChange}
                   className="py-2"
                 />
-                <div className="flex justify-between text-xs text-slate-500">
+                <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
                   <span>₹0</span>
                   <span>₹10,00,000</span>
                 </div>
@@ -155,7 +160,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
               {/* Interest Rate */}
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <Label htmlFor="interestRate" className="text-sm font-medium flex items-center">
+                  <Label htmlFor="interestRate" className="text-sm font-medium flex items-center dark:text-slate-300">
                     Interest Rate (% per year)
                     <TooltipProvider>
                       <UITooltip>
@@ -168,14 +173,14 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                       </UITooltip>
                     </TooltipProvider>
                   </Label>
-                  <span className="text-sm font-semibold">{interestRate}%</span>
+                  <span className="text-sm font-semibold dark:text-slate-200">{interestRate}%</span>
                 </div>
                 <Input
                   id="interestRate"
                   type="number"
                   value={interestRate}
                   onChange={handleInterestRateChange}
-                  className="border-calculator-gray bg-white"
+                  className="border-calculator-gray bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200"
                 />
                 <Slider
                   defaultValue={[interestRate]}
@@ -185,7 +190,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                   onValueChange={handleInterestRateSliderChange}
                   className="py-2"
                 />
-                <div className="flex justify-between text-xs text-slate-500">
+                <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
                   <span>0%</span>
                   <span>30%</span>
                 </div>
@@ -194,7 +199,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
               {/* Loan Term */}
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <Label htmlFor="loanTerm" className="text-sm font-medium flex items-center">
+                  <Label htmlFor="loanTerm" className="text-sm font-medium flex items-center dark:text-slate-300">
                     Loan Term (months)
                     <TooltipProvider>
                       <UITooltip>
@@ -207,14 +212,14 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                       </UITooltip>
                     </TooltipProvider>
                   </Label>
-                  <span className="text-sm font-semibold">{loanTerm} months</span>
+                  <span className="text-sm font-semibold dark:text-slate-200">{loanTerm} months</span>
                 </div>
                 <Input
                   id="loanTerm"
                   type="number"
                   value={loanTerm}
                   onChange={handleLoanTermChange}
-                  className="border-calculator-gray bg-white"
+                  className="border-calculator-gray bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200"
                 />
                 <Slider
                   defaultValue={[loanTerm]}
@@ -224,7 +229,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                   onValueChange={handleLoanTermSliderChange}
                   className="py-2"
                 />
-                <div className="flex justify-between text-xs text-slate-500">
+                <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
                   <span>0</span>
                   <span>360 months (30 years)</span>
                 </div>
@@ -233,40 +238,40 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
 
             <div className="flex flex-col">
               {/* Results Section */}
-              <div className="bg-calculator-gray rounded-lg p-6 mb-4 flex-grow">
-                <h3 className="text-lg font-semibold mb-4">Payment Summary</h3>
+              <div className="bg-calculator-gray dark:bg-slate-700 rounded-lg p-6 mb-4 flex-grow">
+                <h3 className="text-lg font-semibold mb-4 dark:text-slate-200">Payment Summary</h3>
                 
                 <div className="mb-8">
-                  <p className="text-sm text-slate-500 mb-1">Monthly Payment (EMI)</p>
-                  <p className="text-3xl font-bold text-calculator-purple">
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">Monthly Payment (EMI)</p>
+                  <p className="text-3xl font-bold text-calculator-purple dark:text-calculator-lightpurple">
                     {formatCurrency(emi)}
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-sm text-slate-500">Principal Amount</span>
-                    <span className="text-sm font-medium">{formatCurrency(loanAmount)}</span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">Principal Amount</span>
+                    <span className="text-sm font-medium dark:text-slate-300">{formatCurrency(loanAmount)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm text-slate-500">Total Interest</span>
-                    <span className="text-sm font-medium">{formatCurrency(totalInterest)}</span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">Total Interest</span>
+                    <span className="text-sm font-medium dark:text-slate-300">{formatCurrency(totalInterest)}</span>
                   </div>
-                  <div className="flex justify-between pt-2 border-t">
-                    <span className="text-sm font-medium">Total Payment</span>
-                    <span className="text-sm font-bold">{formatCurrency(totalPayment)}</span>
+                  <div className="flex justify-between pt-2 border-t dark:border-slate-600">
+                    <span className="text-sm font-medium dark:text-slate-300">Total Payment</span>
+                    <span className="text-sm font-bold dark:text-slate-200">{formatCurrency(totalPayment)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Chart Section */}
-              <div className="bg-white rounded-lg p-4 border border-slate-200 flex-grow">
-                <h3 className="text-sm font-medium mb-2 text-center">Payment Breakdown</h3>
+              <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border border-slate-200 dark:border-slate-700 flex-grow">
+                <h3 className="text-sm font-medium mb-2 text-center dark:text-slate-300">Payment Breakdown</h3>
                 <div className="h-[180px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
-                        data={chartData}
+                        data={document.documentElement.classList.contains("dark") ? darkModeChartData : chartData}
                         cx="50%"
                         cy="50%"
                         innerRadius={50}
@@ -279,7 +284,7 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                         }
                         labelLine={false}
                       >
-                        {chartData.map((entry, index) => (
+                        {(document.documentElement.classList.contains("dark") ? darkModeChartData : chartData).map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
@@ -290,13 +295,13 @@ const EmiCalculator: React.FC<EmiCalculatorProps> = ({ className }) => {
                   </ResponsiveContainer>
                 </div>
                 <div className="flex justify-center gap-4 mt-2">
-                  {chartData.map((entry, index) => (
+                  {(document.documentElement.classList.contains("dark") ? darkModeChartData : chartData).map((entry, index) => (
                     <div key={index} className="flex items-center">
                       <div
                         className="w-3 h-3 rounded-full mr-1"
                         style={{ backgroundColor: entry.color }}
                       ></div>
-                      <span className="text-xs">{entry.name}</span>
+                      <span className="text-xs dark:text-slate-400">{entry.name}</span>
                     </div>
                   ))}
                 </div>
